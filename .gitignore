@@ -6,3 +6,4 @@ out/
 gradlew
 gradlew.bat
 cmake-build-debug/
+src/main/go/snippets/deck/x.data
