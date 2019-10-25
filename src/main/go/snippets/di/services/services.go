@@ -4,6 +4,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/Pwera/Playground/src/main/go/snippets/di/garage"
 	"github.com/Pwera/Playground/src/main/go/snippets/di/logging"
 	"github.com/sarulabs/di"
 	"go.uber.org/zap"
