@@ -8,4 +8,6 @@ gradlew.bat
 cmake-build-debug/
 src/main/go/snippets/deck/x.data
 
-src/main/rust/hello_world/target/*
+src/main/rust/rs/target/*
+src/main/rust/rs/Cargo.lock
+src/main/rust/rs/.idea
