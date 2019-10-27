@@ -49,13 +49,14 @@ func main() {
 	r.HandleFunc("/cars/{carId}", m(handlers.PutCarHandler)).Methods("PUT")
 	r.HandleFunc("/cars/{carId}", m(handlers.DeleteCarHandler)).Methods("DELETE")
 
+	port := os.Getenv("SERVER_PORT")
 	srv := &http.Server{
 		Handler:      r,
-		Addr:         "0.0.0.0" + os.Getenv("SERVER_PORT"),
+		Addr:         "0.0.0.0:" + port,
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
 	}
-	logging.Logger.Info("Listening on port" + os.Getenv("SERVER_PORT"))
+	logging.Logger.Info("Listening on port " + port)
 
 	go func() {
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
