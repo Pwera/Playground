@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>wasm 1</title>
+</head>
+<body>
+    <h1>Webassembly</h1>
+    <script>
+
+        const readMemStr = (offset, length)=>{
+            const strBuffer = new Uint8Array(wasm.instance.exports.memory.buffer, offset, length)
+            const str = new TextDecoder().decode(strBuffer)
+            
+            window.dispatchEvent(new CustomEvent('wasmValue', {detail: str}))
+        }
+        window.addEventListener('wasmValue', str=>{
+            console.log('Received string', str.detail)
+        })
+        
+        const imports = {
+            env: {
+                consoleLog: console.log,
+                strLog: readMemStr
+            }
+        }
+        // webassembly
+        WebAssembly.instantiateStreaming(fetch('program.wasm'), imports)
+        .then(wasm =>{
+            console.log("wasm ready");
+            window.wasm = wasm
+            console.log(WebAssembly.Module.exports(wasm.module));
+            wasm.instance.exports.myfunc(24)
+            console.log(WebAssembly.Module.imports(wasm.module));
+        })
+        
+    </script>
+</body>
+</html>
