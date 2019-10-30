@@ -14,3 +14,5 @@ src/main/rust/rs/.idea
 
 src/main/webassembly/wasm1/node_modules/
 src/main/webassembly/wasm2/node_modules/
+src/main/webassembly/wasm3/node_modules/
+src/main/webassembly/wasm4/node_modules/

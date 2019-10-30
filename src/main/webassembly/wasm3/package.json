@@ -1,0 +1,14 @@
+{
+  "name": "wasm1",
+  "version": "1.0.0",
+  "description": "Description",
+  "main": "server.js",
+  "author": "Piotr Wera",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
