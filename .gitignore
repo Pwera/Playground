@@ -11,8 +11,10 @@ src/main/go/snippets/deck/x.data
 src/main/rust/rs/target/*
 src/main/rust/rs/Cargo.lock
 src/main/rust/rs/.idea
+src/main/rust/dyn/target/
 
 src/main/webassembly/wasm1/node_modules/
 src/main/webassembly/wasm2/node_modules/
 src/main/webassembly/wasm3/node_modules/
 src/main/webassembly/wasm4/node_modules/
+
