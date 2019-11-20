@@ -15,6 +15,7 @@ mod commons;
 mod sd;
 mod ownerships;
 mod lifetime;
+mod mpsc;
 
 const MEM: u8 = 42;
 static mut XX: u8 = 45;
@@ -81,4 +82,6 @@ fn main() {
     lifetime::lifetime2();
     lifetime::reference_counting();
     lifetime::arc();
+    mpsc::f();
+
 }
