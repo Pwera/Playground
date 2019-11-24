@@ -2,63 +2,30 @@ package main
 
 import (
 	"fmt"
+
+	"github.com/Pwera/Playground/src/main/go/snippets/deck/deckk"
 )
 
-type Message interface {
-	fun(s string) string
-}
-
-type Package struct {
-	m1 Message
-	m2 Message
-}
-type RealMessage struct {
-}
-
-func (rm RealMessage) fun(s string) string {
-	return s + " ..."
-}
-
-type MessageExtractor struct {
-	RealMessage
-}
-
 func main() {
-	fmt.Println(".......\n......")
-	var card string = "?"
-	card = "asd"
-	c := "asd"
-	fmt.Println(card)
-	fmt.Println(c)
-	myPackage := Package{
-		m1: RealMessage{},
-		m2: RealMessage{}}
-	fmt.Println(myPackage)
-	fmt.Println(myPackage.m1.fun("23"))
-	me := MessageExtractor{}
-	fmt.Println(me)
-	fmt.Println(me.fun("??"))
+	dm := deckk.DeckManager{Data: deckk.Deck{"RealMessage", "MessageExtractor"}}
+	dm2 := append(dm.Data, "RealMessage")
 
-	ar := deck{"RealMessage", "MessageExtractor"}
-	ar2 := append(ar, "RealMessage")
+	fmt.Println(len(dm.Data), len(dm2))
 
-	fmt.Println(len(ar), len(ar2))
-
-	for _, message := range ar2 {
+	for _, message := range dm2 {
 		fmt.Println(message)
 	}
-	for i, message := range ar2 {
+	for i, message := range dm2 {
 		fmt.Println(message, i)
 	}
 
-	ar.print()
-	ar2.print()
+	dm.Print()
 
-	fmt.Println(ar.deal(1))
+	fmt.Println(dm.Deal(1))
 
-	ar.saveToFile("x.data")
+	dm.SaveToFile("x.data")
 
-	deck, err := newDeckFromFile("x.data")
+	deck, err := deckk.NewDeckFromFile("x.data")
 	if err != nil {
 		fmt.Printf("Error while newDeckFromFile : %v", err)
 	}

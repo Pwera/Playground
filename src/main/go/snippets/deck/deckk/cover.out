@@ -1,0 +1,16 @@
+mode: set
+github.com/Pwera/Playground/src/main/go/snippets/deck/deckk/deck.go:17.21,21.33 4 1
+github.com/Pwera/Playground/src/main/go/snippets/deck/deckk/deck.go:26.2,26.10 1 1
+github.com/Pwera/Playground/src/main/go/snippets/deck/deckk/deck.go:21.33,22.36 1 1
+github.com/Pwera/Playground/src/main/go/snippets/deck/deckk/deck.go:22.36,24.4 1 1
+github.com/Pwera/Playground/src/main/go/snippets/deck/deckk/deck.go:29.31,30.27 1 0
+github.com/Pwera/Playground/src/main/go/snippets/deck/deckk/deck.go:30.27,32.3 1 0
+github.com/Pwera/Playground/src/main/go/snippets/deck/deckk/deck.go:35.51,37.2 1 0
+github.com/Pwera/Playground/src/main/go/snippets/deck/deckk/deck.go:39.41,42.2 2 1
+github.com/Pwera/Playground/src/main/go/snippets/deck/deckk/deck.go:44.56,46.16 2 1
+github.com/Pwera/Playground/src/main/go/snippets/deck/deckk/deck.go:50.2,52.34 3 1
+github.com/Pwera/Playground/src/main/go/snippets/deck/deckk/deck.go:46.16,49.3 2 0
+github.com/Pwera/Playground/src/main/go/snippets/deck/deckk/deck.go:56.35,59.19 3 0
+github.com/Pwera/Playground/src/main/go/snippets/deck/deckk/deck.go:59.19,63.3 2 0
+github.com/Pwera/Playground/src/main/go/snippets/deck/deckk/deck.go:66.48,69.16 3 1
+github.com/Pwera/Playground/src/main/go/snippets/deck/deckk/deck.go:69.16,71.3 1 0
