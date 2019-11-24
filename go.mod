@@ -14,8 +14,10 @@ require (
 	github.com/lib/pq v1.2.0
 	github.com/mattn/go-sqlite3 v1.13.0 // indirect
 	github.com/sarulabs/di v2.0.0+incompatible
+	github.com/streadway/amqp v0.0.0-20190827072141-edfb9018d271 // indirect
 	github.com/subosito/gotenv v1.2.0
 	github.com/urfave/negroni v1.0.0
+	github.com/vmihailenco/msgpack v4.0.4+incompatible
 	github.com/xdg/scram v0.0.0-20180814205039-7eeb5667e42c // indirect
 	github.com/xdg/stringprep v1.0.0 // indirect
 	go.mongodb.org/mongo-driver v1.1.3
