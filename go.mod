@@ -13,7 +13,11 @@ require (
 	github.com/jmoiron/sqlx v1.2.0
 	github.com/lib/pq v1.2.0
 	github.com/mattn/go-sqlite3 v1.13.0 // indirect
+	github.com/meatballhat/negroni-logrus v0.0.0-20170801195057-31067281800f
+	github.com/phyber/negroni-gzip v0.0.0-20180113114010-ef6356a5d029
+	github.com/rs/cors v1.7.0
 	github.com/sarulabs/di v2.0.0+incompatible
+	github.com/sirupsen/logrus v1.4.2 // indirect
 	github.com/streadway/amqp v0.0.0-20190827072141-edfb9018d271 // indirect
 	github.com/subosito/gotenv v1.2.0
 	github.com/urfave/negroni v1.0.0
