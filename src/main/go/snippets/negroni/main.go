@@ -4,14 +4,25 @@ import (
 	"fmt"
 	"github.com/Pwera/Playground/src/main/go/snippets/negroni/negronigzip"
 	"net/http"
+	"os"
+	"runtime/pprof"
 
 	"github.com/Pwera/Playground/src/main/go/snippets/negroni/custommiddleware"
-	"github.com/Pwera/Playground/src/main/go/snippets/negroni/negronilogrus"
 	"github.com/Pwera/Playground/src/main/go/snippets/negroni/negronicors"
+	"github.com/Pwera/Playground/src/main/go/snippets/negroni/negronilogrus"
 	"github.com/urfave/negroni"
 )
 
 func main() {
+	f, err := os.Create("./cpu.prof")
+	if err != nil {
+		panic(err)
+	}
+	err = pprof.StartCPUProfile(f)
+	if err != nil {
+		panic(err)
+	}
+	defer pprof.StopCPUProfile()
 	mux := http.NewServeMux()
 	customMiddleware := custommiddleware.CustomMiddleware{}
 	negroniLogrusWrapper := negronilogrus.NewNegroniLogrusWrapper()
