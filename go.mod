@@ -23,6 +23,7 @@ require (
 	github.com/phyber/negroni-gzip v0.0.0-20180113114010-ef6356a5d029
 	github.com/rs/cors v1.7.0
 	github.com/sarulabs/di v2.0.0+incompatible
+	github.com/seborama/fuego v8.2.0+incompatible
 	github.com/securego/gosec v0.0.0-20191119104125-df484bfa9e9f // indirect
 	github.com/streadway/amqp v0.0.0-20190827072141-edfb9018d271 // indirect
 	github.com/subosito/gotenv v1.2.0
