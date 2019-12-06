@@ -63,7 +63,9 @@ func Test_Map_Collect(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := tt.arg.Map(tt.mapper).Collect(fuego.ToEntrySlice())
+			got := tt.arg.
+				Map(tt.mapper).
+				Collect(fuego.ToEntrySlice())
 			assert.EqualValues(t, tt.want, got)
 		})
 	}
@@ -135,7 +137,10 @@ func Test_Map_Filter_Collect(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := tt.arg.Map(tt.mapper).Filter(tt.predicate).Collect(fuego.ToEntrySlice())
+			got := tt.arg.
+				Map(tt.mapper).
+				Filter(tt.predicate).
+				Collect(fuego.ToEntrySlice())
 			assert.EqualValues(t, tt.want, got)
 		})
 	}
@@ -155,7 +160,8 @@ func Test_Reduce(t *testing.T) {
 		fuego.EntryString("4"),
 		fuego.EntryString("3")}
 
-	res := fuego.NewStreamFromSlice(data, 0).Reduce(concatenateStringsBiFunc)
+	res := fuego.NewStreamFromSlice(data, 0).
+		Reduce(concatenateStringsBiFunc)
 	assert.EqualValues(t, "5-2-1-4-3", res)
 }
 
@@ -166,8 +172,22 @@ func Test_AllMatch(t *testing.T) {
 		fuego.EntryString("@"),
 		fuego.EntryString(" @")}
 
-	res := fuego.NewStreamFromSlice(data, 0).AllMatch(func(t fuego.Entry) bool {
-		return strings.Contains(string(t.(fuego.EntryString)), "@")
-	})
+	res := fuego.NewStreamFromSlice(data, 0).
+		AllMatch(func(t fuego.Entry) bool {
+			return strings.Contains(string(t.(fuego.EntryString)), "@")
+		})
 	assert.True(t, res)
+}
+func Test_FlatMap(t *testing.T) {
+	a := fuego.EntrySlice{fuego.EntryInt(1), fuego.EntryInt(2), fuego.EntryInt(3)}
+	b := fuego.EntrySlice{fuego.EntryInt(4), fuego.EntryInt(5)}
+	c := fuego.EntrySlice{fuego.EntryInt(6), fuego.EntryInt(7), fuego.EntryInt(8)}
+
+	sliceOfEntrySlicesOfEntryInts := fuego.EntrySlice{a, b, c}
+
+	sliceOfEntryInts := fuego.NewStreamFromSlice(sliceOfEntrySlicesOfEntryInts, 0).
+		FlatMap(fuego.FlattenEntrySliceToEntry(0)).
+		Collect(fuego.ToEntrySlice())
+
+	assert.EqualValues(t, fuego.EntrySlice{fuego.EntryInt(1),fuego.EntryInt(2),fuego.EntryInt(3),fuego.EntryInt(4),fuego.EntryInt(5),fuego.EntryInt(6),fuego.EntryInt(7),fuego.EntryInt(8)}, sliceOfEntryInts)
 }
