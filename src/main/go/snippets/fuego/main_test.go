@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/seborama/fuego"
 	"github.com/stretchr/testify/assert"
 	"strings"
@@ -18,6 +19,12 @@ func AllowPredicate(t fuego.Entry) bool {
 }
 func BlockPredicate(t fuego.Entry) bool {
 	return false
+}
+func stringLength(e fuego.Entry) fuego.Entry {
+	return e.(fuego.EntryString).Len()
+}
+func stringToUpper(e fuego.Entry) fuego.Entry {
+	return e.(fuego.EntryString).ToUpper()
 }
 
 func Test_Map_Collect(t *testing.T) {
@@ -189,5 +196,22 @@ func Test_FlatMap(t *testing.T) {
 		FlatMap(fuego.FlattenEntrySliceToEntry(0)).
 		Collect(fuego.ToEntrySlice())
 
-	assert.EqualValues(t, fuego.EntrySlice{fuego.EntryInt(1),fuego.EntryInt(2),fuego.EntryInt(3),fuego.EntryInt(4),fuego.EntryInt(5),fuego.EntryInt(6),fuego.EntryInt(7),fuego.EntryInt(8)}, sliceOfEntryInts)
+	assert.EqualValues(t, fuego.EntrySlice{fuego.EntryInt(1), fuego.EntryInt(2), fuego.EntryInt(3), fuego.EntryInt(4), fuego.EntryInt(5), fuego.EntryInt(6), fuego.EntryInt(7), fuego.EntryInt(8)}, sliceOfEntryInts)
+}
+
+func Test_Collect_GroupingBy(t *testing.T) {
+	data := fuego.EntrySlice{
+		fuego.EntryString("a"),
+		fuego.EntryString("bb"),
+		fuego.EntryString("cc"),
+		fuego.EntryString("ddd"),
+	}
+
+	collect := fuego.NewStreamFromSlice(data, 1e3).Collect(
+		fuego.GroupingBy(
+			stringLength,
+			fuego.Mapping(
+				stringToUpper,
+				fuego.ToEntrySlice())))
+	fmt.Print(collect)
 }
