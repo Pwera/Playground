@@ -2,26 +2,86 @@ package main
 
 import (
 	"fmt"
-	"net/http"
-
 	"gopkg.in/yaml.v2"
+	"io/ioutil"
+	"net/http"
 )
 
-func main() {
-	mux := defaultMux()
+type Urlshortener struct {
+	PathsToUrls map[string]string
+	yamlBytes   []byte
+	mux         *http.ServeMux
+}
 
-	pathsToUrls := map[string]string{
-		"urlshort-godoc": "http://p.com",
-		"yaml-godoc":     "http://o.com",
+func (u *Urlshortener) ReadYml() {
+	bb, err := ioutil.ReadFile("test.yml")
+	if err != nil {
+		panic(err)
 	}
-	mapHandler := MapHandler(pathsToUrls, mux)
-	yamls := `
-- path: /urlshort
-  url: https://github.com/gophercises/urlshort
-- path: /urlshort-final
-  url: https://github.com/gophercises/urlshort/tree/solution
-`
-	yamlHandler, err := YAMLHandler([]byte(yamls), mapHandler)
+	u.yamlBytes = bb
+}
+func (u *Urlshortener) MapHandler() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		path := r.URL.Path
+		if dest, ok := u.PathsToUrls[path]; ok {
+			http.Redirect(w, r, dest, http.StatusFound)
+			return
+		}
+		if w == nil {
+			println("recorder")
+		}
+		if r == nil {
+			println("request")
+		}
+		u.mux.ServeHTTP(w, r)
+	}
+}
+
+func (u *Urlshortener) YAMLHandler() (http.HandlerFunc, error) {
+	pathUrls, err := u.parseYaml()
+	if err != nil {
+		return nil, err
+	}
+	//TODO: merge maps
+	u.PathsToUrls = u.buildMap(pathUrls)
+	return u.MapHandler(), nil
+}
+
+func (u *Urlshortener) parseYaml() ([]pathUrl, error) {
+	var pathUrls []pathUrl
+	err := yaml.Unmarshal(u.yamlBytes, &pathUrls)
+	return pathUrls, err
+}
+
+func (u *Urlshortener) buildMap(pathUrls []pathUrl) map[string]string {
+	pathsToUrls := make(map[string]string)
+
+	for _, pu := range pathUrls {
+		pathsToUrls[pu.Path] = pu.Url
+	}
+	return pathsToUrls
+}
+
+func (u *Urlshortener) DefaultMux() {
+	u.mux = http.NewServeMux()
+	u.mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintln(w, "Hello, world!")
+	})
+}
+func (u *Urlshortener) MakeHandler() (http.HandlerFunc, error) {
+	u.DefaultMux()
+	u.MapHandler()
+	u.ReadYml()
+	return u.YAMLHandler()
+}
+
+func main() {
+	urlshortener := Urlshortener{PathsToUrls: map[string]string{
+		"/urlshort-godoc": "http://p.com",
+		"/yaml-godoc":     "http://o.com",
+	},
+	}
+	yamlHandler, err := urlshortener.MakeHandler()
 	if err != nil {
 		panic(err)
 	}
@@ -31,51 +91,4 @@ func main() {
 type pathUrl struct {
 	Path string `yaml:"path"`
 	Url  string `yaml:"url"`
-}
-
-func YAMLHandler(yamlBytes []byte, fallback http.Handler) (http.HandlerFunc, error) {
-	pathUrls, err := parseYaml(yamlBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	pathsToUrls := buildMap(pathUrls)
-
-	return MapHandler(pathsToUrls, fallback), nil
-}
-
-func MapHandler(pathsToUrls map[string]string, fallback http.Handler) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		path := r.URL.Path
-		if dest, ok := pathsToUrls[path]; ok {
-			http.Redirect(w, r, dest, http.StatusFound)
-			return
-		}
-		fallback.ServeHTTP(w, r)
-	}
-}
-
-func defaultMux() *http.ServeMux {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/", hello)
-	return mux
-
-}
-func hello(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Hello, world!")
-}
-
-func parseYaml(data []byte) ([]pathUrl, error) {
-	var pathUrls []pathUrl
-	err := yaml.Unmarshal(data, &pathUrls)
-	return pathUrls, err
-}
-
-func buildMap(pathUrls []pathUrl) map[string]string {
-	pathsToUrls := make(map[string]string)
-
-	for _, pu := range pathUrls {
-		pathsToUrls[pu.Path] = pu.Url
-	}
-	return pathsToUrls
 }
