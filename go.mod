@@ -3,14 +3,11 @@ module github.com/Pwera/Playground
 go 1.12
 
 require (
-	github.com/coreos/go-systemd v0.0.0-20190719114852-fd7a80b32e1f // indirect
-	github.com/coreos/pkg v0.0.0-20180928190104-399ea9e2e55f // indirect
 	github.com/creack/pty v1.1.9 // indirect
 	github.com/davecgh/go-spew v1.1.1
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/fzipp/gocyclo v0.0.0-20150627053110-6acd4345c835 // indirect
 	github.com/go-sql-driver/mysql v1.4.1 // indirect
-	github.com/go-stack/stack v1.8.0 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/gorilla/mux v1.7.3
 	github.com/gorilla/websocket v1.4.1
@@ -26,6 +23,7 @@ require (
 	github.com/seborama/fuego v8.2.0+incompatible
 	github.com/securego/gosec v0.0.0-20191119104125-df484bfa9e9f // indirect
 	github.com/streadway/amqp v0.0.0-20190827072141-edfb9018d271 // indirect
+	github.com/stretchr/testify v1.4.0
 	github.com/subosito/gotenv v1.2.0
 	github.com/urfave/negroni v1.0.0
 	github.com/vmihailenco/msgpack v4.0.4+incompatible
