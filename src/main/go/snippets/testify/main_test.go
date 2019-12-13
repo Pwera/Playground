@@ -4,11 +4,17 @@ import (
 	"fmt"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
+	"github.com/stretchr/testify/suite"
 	"testing"
 )
 
 type TestObjectImplementation struct {
 	mock.Mock
+}
+
+type TestObjectSuiteImplementation struct {
+	suite.Suite
+	startPoint int
 }
 
 func printArgumentFunction(str string) {
@@ -18,9 +24,13 @@ func printArgumentLenFunction(str string) {
 	fmt.Print(len(str))
 }
 
-func Test_Nothing(t *testing.T) {
-	object := &Object{}
-	Function(object, printArgumentFunction)
+//func Test_Nothing(t *testing.T) {
+//	object := &Object{}
+//	Function(object, printArgumentFunction)
+//}
+
+func (suite *TestObjectSuiteImplementation) SetupTest() {
+	suite.startPoint = 5
 }
 
 func Test_Object_F(t *testing.T) {
@@ -56,4 +66,13 @@ func Test_Object_AnythingOfType(t *testing.T) {
 	assert.Equal(t, 0, c.ReturnArguments[0])
 	assert.Equal(t, nil, c.ReturnArguments[1])
 	assert.Equal(t, "Method_C", c.Method)
+}
+
+func (suite *TestObjectSuiteImplementation) TestExample() {
+	assert.Equal(suite.T(), 5, suite.startPoint)
+	suite.Equal(5, suite.startPoint)
+}
+
+func TestExampleTestSuite(t *testing.T) {
+	suite.Run(t, new(TestObjectSuiteImplementation))
 }
