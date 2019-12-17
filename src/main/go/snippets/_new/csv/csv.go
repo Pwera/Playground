@@ -1,4 +1,4 @@
-package main
+package csv
 
 import (
 	"encoding/csv"
@@ -14,7 +14,7 @@ type problem struct {
 	a string
 }
 
-func main() {
+func ExampleCsv() {
 	csvFile := flag.String("csv", "problems.csv", "a csv file in the format of 'question,answer'")
 	timeLimit := flag.Int("limit", 30, "the time limits in seconds")
 

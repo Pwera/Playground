@@ -1,4 +1,4 @@
-package main
+package io
 
 import (
 	"bytes"
@@ -9,7 +9,7 @@ import (
 	"os"
 )
 
-func main() {
+func ExampleIo() {
 	payload := []byte{137, 80, 78, 71, 13, 10, 26, 10, 11, 12, 14}
 	buf := make([]byte, 4)
 

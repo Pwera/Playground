@@ -1,4 +1,4 @@
-package main
+package encoder
 
 import (
 	"encoding/json"
@@ -74,7 +74,7 @@ func encodeUnknownTypes() {
 		}
 	}
 }
-func main() {
+func ExampleEncoder() {
 	encodeKnownTypes()
 	encodeUnknownTypes()
 }

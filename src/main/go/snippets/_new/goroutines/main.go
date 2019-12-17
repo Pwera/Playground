@@ -1,4 +1,4 @@
-package main
+package goroutines
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func main() {
+func ExampleGoroutines() {
 	urls := []string{
 		"http://google.com",
 		"http://facebook.com",

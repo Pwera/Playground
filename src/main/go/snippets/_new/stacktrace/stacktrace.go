@@ -1,11 +1,11 @@
-package main
+package stacktrace
 
 import (
 	"fmt"
 	"runtime/debug"
 )
 
-func main() {
+func ExampleStackTrace() {
 	debug.PrintStack()
 	defer debug.PrintStack()
 	done := make(chan bool)

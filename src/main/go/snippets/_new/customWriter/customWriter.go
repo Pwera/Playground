@@ -1,4 +1,4 @@
-package main
+package customWriter
 
 import (
 	"fmt"
@@ -13,7 +13,7 @@ func (customWriter) Write(bs []byte) (int, error) {
 	return len(bs), nil
 }
 
-func main() {
+func ExampleCustomWriter() {
 	resp, err := http.Get("http://google.com")
 	if err != nil {
 		fmt.Printf("Err %v", err)

@@ -1,12 +1,12 @@
-package main
+package deckk
 
 import (
 	"fmt"
 
-	"github.com/Pwera/Playground/src/main/go/snippets/deck/deckk"
+	"github.com/pwera/Playground/src/main/go/snippets/_new/deck/deckk"
 )
 
-func main() {
+func ExampleDeck() {
 	dm := deckk.DeckManager{Data: deckk.Deck{"RealMessage", "MessageExtractor"}}
 	dm2 := append(dm.Data, "RealMessage")
 

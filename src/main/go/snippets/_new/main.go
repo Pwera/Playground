@@ -1,6 +1,9 @@
 package main
 
+import (
+	"github.com/pwera/Playground/src/main/go/snippets/_new/printProcessList"
+)
 
-func main(){
-
+func main() {
+	printProcessList.ExamplePrintProcess()
 }
