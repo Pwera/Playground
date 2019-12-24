@@ -65,8 +65,9 @@ func (c *Client) NewRequest(method, urlString string, body interface{}) (*http.R
 	}
 
 	if body != nil {
-		req.Header.Set("Accept", acceptVersionHeader)
+		req.Header.Set("Content-Type", "application/json")
 	}
+	req.Header.Set("Accept", acceptVersionHeader)
 	return req, nil
 }
 
@@ -95,7 +96,7 @@ type ErrorResponse struct {
 }
 
 func (er *ErrorResponse) Error() string {
-	return fmt.Sprintf("%v %v: %d %v", er.Response.Request.Method, er.Response.Request.URL.Path)
+	return fmt.Sprintf("%v %v", er.Response.Request.Method, er.Response.Request.URL.Path)
 }
 
 func CheckResponse(resp *http.Response) error {
@@ -104,19 +105,24 @@ func CheckResponse(resp *http.Response) error {
 	}
 	errorResponse := &ErrorResponse{Response: resp}
 	data, err := ioutil.ReadAll(resp.Body)
-	if err != nil && data == nil {
+	if err == nil && data == nil {
 		json.Unmarshal(data, errorResponse)
 	}
 	return errorResponse
 }
 
 func (c *Client) encodeBody(body interface{}) (io.ReadWriter, error) {
+	var buf io.ReadWriter
 	if body != nil {
-		var buf io.ReadWriter
 		buf = new(bytes.Buffer)
 		enc := json.NewEncoder(buf)
 		enc.SetEscapeHTML(false)
 		err := enc.Encode(body)
+		if err != nil{
+			return nil, err
+		}else{
+			return buf, nil
+		}
 		return buf, err
 	}
 	return nil, nil

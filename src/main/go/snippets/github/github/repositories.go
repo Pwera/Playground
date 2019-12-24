@@ -12,7 +12,7 @@ const (
 )
 
 type RepositoriesService struct {
-	client *Client
+	Client *Client
 }
 
 type Repository struct {
@@ -30,12 +30,12 @@ func (s *RepositoriesService) List(ctx context.Context, user string) ([]*Reposit
 		path = defaultReposPath
 	}
 
-	req, err := s.client.NewRequest(http.MethodGet, path, nil)
+	req, err := s.Client.NewRequest(http.MethodGet, path, nil)
 	if err != nil {
 		return nil, nil, err
 	}
 	var repos []*Repository
-	resp, err := s.client.Do(ctx, req, &repos)
+	resp, err := s.Client.Do(ctx, req, &repos)
 	if err != nil {
 		return nil, nil, err
 	}

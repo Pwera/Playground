@@ -2,13 +2,22 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"github.com/pwera/Playground/src/main/go/snippets/github/github"
+	"log"
+	"os"
 )
 
 func main() {
+	token, _ := os.LookupEnv("token")
 	background := context.Background()
 	user := "pwera"
-	token := "//"
-	service := github.RepositoriesService{client: NewClient(background, token)}
-	service.List(background, user)
+	service := github.RepositoriesService{Client: github.NewClient(background, token)}
+	list, _, err := service.List(background, user)
+	if err != nil{
+		log.Print(err)
+	}
+	for i, r := range list {
+		fmt.Printf("%d: %v\n", i ,r)
+	}
 }
