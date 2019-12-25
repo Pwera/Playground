@@ -1,6 +1,7 @@
 package services
 
 import (
+	"fmt"
 	"os"
 	"time"
 
@@ -22,6 +23,9 @@ var Services = []di.Def{
 		Name:  "mongo-pool",
 		Scope: di.App,
 		Build: func(ctn di.Container) (interface{}, error) {
+			url, err := mgo.ParseURL(os.Getenv("MONGO_URL"))
+			fmt.Println(url)
+			fmt.Println(err)
 			return mgo.DialWithTimeout(os.Getenv("MONGO_URL"), 5*time.Second)
 		},
 		Close: func(obj interface{}) error {
