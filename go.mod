@@ -11,9 +11,11 @@ require (
 	github.com/gizak/termui/v3 v3.1.0
 	github.com/go-sql-driver/mysql v1.4.1 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
+	github.com/gomodule/oauth1 v0.0.0-20181215000758-9a59ed3b0a84
 	github.com/gorilla/mux v1.7.3
 	github.com/gorilla/websocket v1.4.1
 	github.com/jmoiron/sqlx v1.2.0
+	github.com/joeshaw/envdecode v0.0.0-20190604014844-d6d9849fcc2c
 	github.com/kisielk/errcheck v1.2.0 // indirect
 	github.com/lib/pq v1.2.0
 	github.com/mattn/go-runewidth v0.0.7 // indirect
