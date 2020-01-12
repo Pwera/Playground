@@ -40,13 +40,17 @@ func (c *Connector) CloseConn() {
 
 func (c *Connector) LoadOptions() ([]string, error) {
 	var options []string
-	iter := c.db.DB("ballots").C("polls").Find(nil).Iter()
+	iter := c.RetrivePollData().Find(nil).Iter()
 	var p domain.Pool
 	for iter.Next(&p) {
 		options = append(options, p.Options...)
 	}
 	iter.Close()
 	return options, iter.Err()
+}
+
+func (c *Connector) RetrivePollData() *mgo.Collection {
+	return c.db.DB("ballots").C("polls")
 }
 
 func (c *Connector) Dial(netw, addr string) (net.Conn, error) {
