@@ -41,7 +41,7 @@ func (c *Connector) CloseConn() {
 func (c *Connector) LoadOptions() ([]string, error) {
 	var options []string
 	iter := c.RetrivePollData().Find(nil).Iter()
-	var p domain.Pool
+	var p domain.Poll
 	for iter.Next(&p) {
 		options = append(options, p.Options...)
 	}
@@ -64,4 +64,7 @@ func (c *Connector) Dial(netw, addr string) (net.Conn, error) {
 	}
 	c.conn = netc
 	return netc, nil
+}
+func (c *Connector) SessionCopy() *mgo.Session {
+	return c.db.Copy()
 }
