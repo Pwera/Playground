@@ -14,6 +14,8 @@ src/main/rust/rs/.idea
 src/main/rust/dyn/target/
 src/main/rust/cli/target/
 
+src/main/rust/pipe/target/
+
 src/main/webassembly/wasm1/node_modules/
 src/main/webassembly/wasm2/node_modules/
 src/main/webassembly/wasm3/node_modules/
