@@ -2,8 +2,8 @@ package twitter
 
 import (
 	"encoding/json"
-	"github.com/pwera/Playground/src/main/go/snippets/app1/db"
-	"github.com/pwera/Playground/src/main/go/snippets/app1/domain"
+	"github.com/pwera/app1/db"
+	"github.com/pwera/app1/domain"
 	"log"
 	"net/http"
 	"net/url"

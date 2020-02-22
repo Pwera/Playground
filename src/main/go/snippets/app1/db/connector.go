@@ -1,10 +1,11 @@
 package db
 
 import (
-	"github.com/pwera/Playground/src/main/go/snippets/app1/domain"
+	"github.com/pwera/app1/domain"
 	"gopkg.in/mgo.v2"
 	"io"
 	"log"
+	"fmt"
 	"net"
 	"time"
 )

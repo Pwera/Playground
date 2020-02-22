@@ -29,4 +29,6 @@ src/main/webassembly/wasm6
 src/main/go/snippets/app1/votes.diskqueue.meta.dat
 
 src/main/go/snippets/app1/*.dat
+src/main/go/snippets/app1/mongodbdata/*
 
+*.env

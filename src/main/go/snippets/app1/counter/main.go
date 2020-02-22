@@ -1,8 +1,10 @@
 package main
 
 import (
+	"flag"
+	"fmt"
 	"github.com/nsqio/go-nsq"
-	"github.com/pwera/Playground/src/main/go/snippets/app1/db"
+	"github.com/pwera/app1/db"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"log"
@@ -17,7 +19,11 @@ type data map[string]int
 const updateDuration = 1 * time.Second
 
 func main() {
+	var host string
+	flag.StringVar(&host, "host","localhost","host")
+	flag.Parse()
 	connector := db.NewConnector()
+	fmt.Print("Couter")
 	options, err := connector.LoadOptions()
 	pollData := connector.RetrivePollData()
 	defer connector.CloseDb()
@@ -41,7 +47,7 @@ func main() {
 		}
 		return nil
 	}))
-	if err := q.ConnectToNSQLookupd("localhost:4161");
+	if err := q.ConnectToNSQLookupd(host + ":4161");
 		err != nil {
 		log.Fatalf("ConnectToNSQLookupd problem %v\n", err)
 		return

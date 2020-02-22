@@ -1,9 +1,10 @@
 package main
 
 import (
+	"flag"
 	"github.com/nsqio/go-nsq"
-	"github.com/pwera/Playground/src/main/go/snippets/app1/db"
-	twitter2 "github.com/pwera/Playground/src/main/go/snippets/app1/twitter"
+	"github.com/pwera/app1/db"
+	twitter2 "github.com/pwera/app1/twitter"
 	"log"
 	"os"
 	"os/signal"
@@ -13,6 +14,9 @@ import (
 )
 
 func main() {
+	var host string
+	flag.StringVar(&host, "host", "localhost", "host")
+	flag.Parse()
 	twitter := twitter2.Twitter{Connector: db.NewConnector()}
 	defer twitter.Connector.CloseDb()
 
@@ -31,7 +35,7 @@ func main() {
 	}()
 	signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM)
 	votes := make(chan string)
-	publisherStoppedChan := publishVotes(votes)
+	publisherStoppedChan := publishVotes(votes, host)
 	twitterStoppedChan := twitter.StartTwitterStream(stopChan, votes)
 	go func() {
 		for {
@@ -51,9 +55,9 @@ func main() {
 
 }
 
-func publishVotes(votes <-chan string) <-chan struct{} {
+func publishVotes(votes <-chan string, host string) <-chan struct{} {
 	stopchan := make(chan struct{}, 1)
-	pub, _ := nsq.NewProducer("localhost:4150", nsq.NewConfig())
+	pub, _ := nsq.NewProducer(host+":4150", nsq.NewConfig())
 	go func() {
 		for vote := range votes {
 			pub.Publish("votes", []byte(vote))
