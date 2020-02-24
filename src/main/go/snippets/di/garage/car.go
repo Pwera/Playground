@@ -3,7 +3,7 @@ package garage
 import (
 	"strings"
 
-	"github.com/Pwera/Playground/src/main/go/snippets/di/helpers"
+	"github.com/pwera/di/helpers"
 )
 
 type Car struct {

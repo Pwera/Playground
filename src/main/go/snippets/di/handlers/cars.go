@@ -3,9 +3,9 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/Pwera/Playground/src/main/go/snippets/di/garage"
-	"github.com/Pwera/Playground/src/main/go/snippets/di/helpers"
 	"github.com/gorilla/mux"
+	"github.com/pwera/di/garage"
+	"github.com/pwera/di/helpers"
 	"github.com/sarulabs/di"
 )
 

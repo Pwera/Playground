@@ -1,7 +1,7 @@
 package garage
 
 import (
-	"github.com/Pwera/Playground/src/main/go/snippets/di/helpers"
+	"github.com/pwera/di/helpers"
 	"go.uber.org/zap"
 	"gopkg.in/mgo.v2/bson"
 )

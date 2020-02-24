@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/Pwera/Playground/src/main/go/snippets/di/helpers"
+	"github.com/pwera/di/helpers"
 	"go.uber.org/zap"
 )
 

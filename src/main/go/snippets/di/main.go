@@ -8,10 +8,10 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/Pwera/Playground/src/main/go/snippets/di/handlers"
-	"github.com/Pwera/Playground/src/main/go/snippets/di/logging"
-	"github.com/Pwera/Playground/src/main/go/snippets/di/middlewares"
-	"github.com/Pwera/Playground/src/main/go/snippets/di/services"
+	"github.com/pwera/di/handlers"
+	"github.com/pwera/di/logging"
+	"github.com/pwera/di/middlewares"
+	"github.com/pwera/di/services"
 	"github.com/gorilla/mux"
 	"github.com/sarulabs/di"
 )
