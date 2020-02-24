@@ -2,14 +2,14 @@ package main
 
 import (
 	"fmt"
-	"github.com/Pwera/Playground/src/main/go/snippets/negroni/negronigzip"
+	"github.com/pwera/negroni/negronigzip"
 	"net/http"
 	"os"
 	"runtime/pprof"
 
-	"github.com/Pwera/Playground/src/main/go/snippets/negroni/custommiddleware"
-	"github.com/Pwera/Playground/src/main/go/snippets/negroni/negronicors"
-	"github.com/Pwera/Playground/src/main/go/snippets/negroni/negronilogrus"
+	"github.com/pwera/negroni/custommiddleware"
+	"github.com/pwera/negroni/negronicors"
+	"github.com/pwera/negroni/negronilogrus"
 	"github.com/urfave/negroni"
 )
 
