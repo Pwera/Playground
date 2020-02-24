@@ -2,7 +2,7 @@ package service
 
 import (
 	"encoding/json"
-	"github.com/Pwera/Playground/src/main/go/snippets/mongo1/db"
+	"github.com/pwera/mongo/db"
 	"net/http"
 	"time"
 )

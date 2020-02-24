@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/Pwera/Playground/src/main/go/snippets/mongo1/service"
+	"github.com/pwera/mongo/service"
 
 	"github.com/jmoiron/sqlx"
 	"github.com/urfave/negroni"
