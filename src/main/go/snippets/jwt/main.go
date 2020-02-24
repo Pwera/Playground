@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 
-	controller "github.com/Pwera/Playground/src/main/go/snippets/jwt/controller"
-	driver "github.com/Pwera/Playground/src/main/go/snippets/jwt/driver"
+	controller "github.com/pwera/jwt/controller"
+	driver "github.com/pwera/jwt/driver"
 
 	"github.com/subosito/gotenv"
 

@@ -8,9 +8,9 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/Pwera/Playground/src/main/go/snippets/jwt/model"
-	"github.com/Pwera/Playground/src/main/go/snippets/jwt/repository"
-	"github.com/Pwera/Playground/src/main/go/snippets/jwt/util"
+	"github.com/pwera/jwt/model"
+	"github.com/pwera/jwt/repository"
+	"github.com/pwera/jwt/util"
 	"github.com/davecgh/go-spew/spew"
 	"github.com/dgrijalva/jwt-go"
 

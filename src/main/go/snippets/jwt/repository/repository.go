@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/Pwera/Playground/src/main/go/snippets/jwt/model"
+	"github.com/pwera/jwt/model"
 )
 
 func logFatal(err error) {

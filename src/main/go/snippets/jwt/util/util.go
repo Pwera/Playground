@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/Pwera/Playground/src/main/go/snippets/jwt/model"
+	"github.com/pwera/jwt/model"
 )
 
 func ResponseJSON(w http.ResponseWriter, data interface{}) {
