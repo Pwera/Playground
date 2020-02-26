@@ -1,0 +1,19 @@
+[package]
+name = "iterator"
+version = "0.1.0"
+authors = ["Pic14kk <piciopicio@wp.pl>"]
+edition = "2018"
+
+[[bin]]
+name="printout"
+path="src/printout.rs"
+
+[[bin]]
+name="lf"
+path="src/lf.rs"
+
+[dependencies]
+itertools = "0.8.2"
+
+# cargo login
+# cargo publish
