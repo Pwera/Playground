@@ -12,6 +12,10 @@ path="src/printout.rs"
 name="lf"
 path="src/lf.rs"
 
+[[bin]]
+name="rc"
+path="src/rc.rs"
+
 [dependencies]
 itertools = "0.8.2"
 
