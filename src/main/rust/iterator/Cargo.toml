@@ -16,6 +16,10 @@ path="src/lf.rs"
 name="rc"
 path="src/rc.rs"
 
+[[bin]]
+name="pool"
+path="src/pool.rs"
+
 [dependencies]
 itertools = "0.8.2"
 
