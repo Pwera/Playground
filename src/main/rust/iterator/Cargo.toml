@@ -1,7 +1,7 @@
 [package]
 name = "iterator"
 version = "0.1.0"
-authors = ["Pic14kk <piciopicio@wp.pl>"]
+authors = ["Piotr Wera <piotr.wera@vp.pl>"]
 edition = "2018"
 
 [[bin]]
@@ -23,6 +23,10 @@ path="src/pool.rs"
 [[bin]]
 name="rayon"
 path="src/rayon.rs"
+
+[[bin]]
+name="svg"
+path="src/svg.rs"
 
 [dependencies]
 itertools = "0.8.2"
