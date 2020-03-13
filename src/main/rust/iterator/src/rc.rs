@@ -14,7 +14,7 @@ pub struct NoLife {
 
 fn main() -> Result<(), std::io::Error> {
     let (l,r) = make_with_nolife("src/testdata.txt")?;
-    let mut s = l.s.borrow_mut();
+    let s = l.s.borrow_mut();
     println!("l = {:?}", l);
     println!("r = {:?}", r);
     println!("s = {:?}", s);

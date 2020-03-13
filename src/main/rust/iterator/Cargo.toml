@@ -28,9 +28,14 @@ path="src/rayon.rs"
 name="svg"
 path="src/svg.rs"
 
+[[bin]]
+name="futures"
+path="src/futures.rs"
+
 [dependencies]
 itertools = "0.8.2"
 rayon = "1.3.0"
+futures-preview = "0.3.0-alpha.19"
 
 # cargo login
 # cargo publish
