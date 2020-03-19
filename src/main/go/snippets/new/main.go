@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"github.com/pwera/new/blockchain"
-	"github.com/pwera/new/ddd"
 	"github.com/pwera/new/io"
 	"github.com/pwera/new/logger"
 	"github.com/pwera/new/printProcessList"
@@ -58,10 +57,4 @@ func main() {
 		app.Run()
 		//curl -X POST http://localhost:3000/add/user -d 'name=alex' -H 'Content-Type: application/x-www-form-urlencoded'
 	}
-
-	if true {
-		ddd.ExamppleUserRepository()
-
-	}
-
 }
