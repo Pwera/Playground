@@ -1,0 +1,56 @@
+// Lecture: Get And Manipulate On Individual Elements - Part 1
+
+/*
+console.log(document.getElementById('list'));
+
+var el = document.getElementById('list');
+console.log(el);
+console.log(typeof el);
+
+// var el = document.getElementById('LIST');
+// console.log(el);
+
+console.log(el.textContent);
+console.log(el.textContent = 'Hello');
+
+var heading = document.getElementById('heading').textContent;
+console.log(heading);
+
+var ulElement = document.getElementById('list');
+console.log(ulElement.textContent = heading);
+
+console.log(el.innerHTML);
+console.log(el.innerHTML = 'Hello');
+console.log(el.innerHTML = '<h1>Hello</h1>');
+console.log(el.textContent = '<h1>Hello</h1>');
+
+console.log(new Date("January 20, 2020 10:14"));
+
+function getTime(){
+    document.getElementById("ss").innerHTML = new Date();
+}
+
+setInterval(getTime, 1000);
+// hoisting
+//dom is not part of html or js
+//prymitywy robią kopie, przy przypisaniu.
+// obiekty działają jako referencje.
+// jest damy c = {} to tworzymy nowy obiekt
+// diff w funkcjach wraca global execution context
+// diff w metodzie zwraca lokalny conyexy
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
