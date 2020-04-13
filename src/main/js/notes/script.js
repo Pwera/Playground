@@ -1,39 +1,92 @@
-// mutiple element
-var icons = document.getElementsByClassName("fa");
+var ul = document.querySelector("ul");
 
-// for(var i=0;i<icons.length; i++){
-//     console.log(icons[i]);
-// }
+document.getElementById("add-btn").addEventListener("click", function(e) {
+  e.preventDefault();
 
+  var li = document.createElement("li"),
+    pFirst = document.createElement("p"),
+    pSecond = document.createElement("p"),
+    iFirst = document.createElement("i"),
+    iSecond = document.createElement("i"),
+    input = document.createElement("input");
+  addInput = document.getElementById("add-input");
 
-var iconsArr = Array.from(icons);
-console.log(iconsArr);
-console.log(icons);
+  if (addInput.value === "") {
+    return;
+  }
 
-iconsArr.forEach(function(icon, index, arr ) {
-    console.log(icon, index, arr);
+  iFirst.className = "fa fa-pencil-square-o";
+  iSecond.className = "fa fa-times";
+
+  input.className = "edit note";
+  input.setAttribute("type", "text");
+
+  pFirst.textContent = addInput.value;
+
+  pSecond.appendChild(iFirst);
+  pSecond.appendChild(iSecond);
+  li.appendChild(pFirst);
+  li.appendChild(pSecond);
+  li.appendChild(input);
+
+  document.getElementById("list").appendChild(li);
+  addInput.value = "";
 });
 
-//single element
-var el = document.querySelector("ul li:nth-child(4)")
+ul.addEventListener("click", function(e) {
+  if (e.target.classList[1] === "fa-pencil-square-o") {
+    console.log("s");
+    var parentPar = e.target.parentNode;
+    parentPar.style.display = "none";
 
+    var note = parentPar.previousElementSibling;
+    var input = parentPar.nextElementSibling;
 
-// getElementsByTagName('tag') return a collection of all aelements in
-// the document with the specified tag name
+    input.style.display = "block";
+    input.value = note.textContent;
 
-lis = document.getElementsByTagName('li');
+    input.addEventListener("keypress", function(e) {
+      if (e.keyCode === 13) {
+        if (input.value !== "") {
+          note.textContent = input.value;
+          parentPar.style.display = "block";
+          input.style.display = "none";
+        } else {
+          var li = input.parentNode;
+          li.parentNode.removeChild(li);
+        }
+      }
+    });
+  } else if (e.target.classList[1] === "fa-times") {
+    var list = e.target.parentNode.parentNode;
+    list.parentNode.removeChild(list);
+  }
+});
 
+var hideItem = document.getElementById("hide");
+hideItem.addEventListener("click", function(e) {
+  var label = document.querySelector("label");
 
-// NodeList has forEach without transforming to Array
+  if (hideItem.checked) {
+    label.textContent = "Unhide notes";
+    ul.style.display = "none";
+  } else {
+    label.textContent = "Hide notes";
+    ul.style.display = "block";
+  }
+});
 
-var aa = document.querySelectorAll("ul li")
+var searchInput = document.querySelector("#search-note input");
+searchInput.addEventListener("keyup", function(e) {
+  var searchChar = e.target.value.toUpperCase();
+  var notes = ul.getElementsByTagName("li");
 
-aa[0].style.cssText = "font-size: 25px";
-
-// className get and sets the value of class attribute of the specified element
-
-var h2 = document.querySelector("header h2");
-
-h2.addEventListener("click", function(e){
-    console.log("clicked", e);
+  Array.from(notes).forEach(function(note) {
+    var parText = note.firstElementChild.textContent.toUpperCase();
+    if (parText.indexOf(searchChar) !== -1) {
+      note.style.display = "clock";
+    } else {
+      note.style.display = "none";
+    }
+  });
 });
