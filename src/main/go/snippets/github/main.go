@@ -3,9 +3,10 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/pwera/Playground/src/main/go/snippets/github/github"
 	"log"
 	"os"
+
+	"github.com/pwera/github/github"
 )
 
 func main() {
@@ -14,10 +15,10 @@ func main() {
 	user := "pwera"
 	service := github.RepositoriesService{Client: github.NewClient(background, token)}
 	list, _, err := service.List(background, user)
-	if err != nil{
+	if err != nil {
 		log.Print(err)
 	}
 	for i, r := range list {
-		fmt.Printf("%d: %v\n", i ,r)
+		fmt.Printf("%d: %v\n", i, r)
 	}
 }
