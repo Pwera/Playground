@@ -33,3 +33,4 @@ src/main/go/snippets/app1/mongodbdata/*
 
 *.env
 src/main/rust/iterator/target/*
+src/main/rust/algo/target/*

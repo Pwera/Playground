@@ -25,7 +25,8 @@ pub fn read_loop(infile: &str, stats_tx: Sender<usize>, write_tx: Sender<Vec<u8>
     }
 
     stats_tx.send(0).unwrap();
-    write_tx.send(Vec::new()).unwrap();
+    let result = write_tx.send(Vec::new());
+    result.unwrap();
 
     Ok(())
 }
