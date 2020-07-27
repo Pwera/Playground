@@ -2,7 +2,7 @@ import { BufReader } from "https://deno.land/std/io/bufio.ts";
 import { parse } from "https://deno.land/std/encoding/csv.ts";
 import { join } from "./deps.ts";
 // import * as _ from "https://raw.githubusercontent.com/lodash/lodash/es/lodash.js"
-import * as _ from "https://deno.land/x/lodash@4.17.15-es/lodash.js"
+import * as _ from "https://deno.land/x/lodash@4.17.15-es/lodash.js";
 
 interface Planet {
   [key: string]: string;
@@ -31,18 +31,18 @@ async function loadPlanets() {
     return planet["koi_disposition"] === "CONFIRMED" &&
       planetaryRadius > 0.5 && planetaryRadius < 1.5 &&
       stellarMass > 0.78 && stellarMass < 1.04 &&
-      stellarRadius>0.99 &&  stellarRadius<1.01 ;
+      stellarRadius > 0.99 && stellarRadius < 1.01;
   });
 
-  return planets.map((planet) =>{
-      return _.pick(planet,[
-          "koi_prad",
-          "koi_smass",
-          "koi_srad",
-          "kepler_name", 
-          "koi_count",
-          "koi_steff"         
-      ])
+  return planets.map((planet) => {
+    return _.pick(planet, [
+      "koi_prad",
+      "koi_smass",
+      "koi_srad",
+      "kepler_name",
+      "koi_count",
+      "koi_steff",
+    ]);
   });
 }
 
