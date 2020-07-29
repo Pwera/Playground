@@ -21,7 +21,6 @@ router.get("/launches", (ctx) => {
 });
 
 router.delete("/launches/:id", (ctx) => {
-  log.info("???");
   if (ctx.params?.id) {
     const result = launches.remove(Number(ctx.params.id));
     ctx.response.body = { success: result };

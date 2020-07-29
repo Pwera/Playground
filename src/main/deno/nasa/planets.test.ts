@@ -1,5 +1,5 @@
-import { log, assertEquals, assertNotEquals } from "./deps.ts";
-
+import { assertEquals, assertNotEquals } from "./test_deps.ts";
+import { log } from "./deps.ts";
 import { filterPlantets } from "./models/planets.ts";
 
 const HABITABLE_PLANET = {

@@ -1,14 +1,10 @@
 // STD
-export * as log from "https://deno.land/std/log/mod.ts";
-export { join } from "https://deno.land/std/path/mod.ts";
-export { BufReader } from "https://deno.land/std/io/bufio.ts";
-export { parse } from "https://deno.land/std/encoding/csv.ts";
-export {
-  assertEquals,
-  assertNotEquals,
-} from "https://deno.land/std/testing/asserts.ts";
+export * as log from "https://deno.land/std@0.62.0/log/mod.ts";
+export { join } from "https://deno.land/std@0.62.0/path/mod.ts";
+export { BufReader } from "https://deno.land/std@0.62.0/io/bufio.ts";
+export { parse } from "https://deno.land/std@0.62.0/encoding/csv.ts";
 
-// 3'RD
+// 3'RD PARTY
 export {
   Router,
   Application,
