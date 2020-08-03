@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "Launch Deno",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "runtimeExecutable": "deno",
+      "runtimeArgs": ["run", "--inspect", "-A", "mod.ts"],
+      "outputCapture": "std",
+      "attachSimplePort": 9229
+    }
+  ]
+}
