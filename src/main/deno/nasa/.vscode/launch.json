@@ -11,6 +11,17 @@
       "runtimeArgs": ["run", "--inspect", "-A", "mod.ts"],
       "outputCapture": "std",
       "attachSimplePort": 9229
+    },
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "Deno test",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "runtimeExecutable": "deno",
+      "runtimeArgs": ["test", "--inspect", "-A", "planets.test.ts"],
+      "outputCapture": "std",
+      "attachSimplePort": 9229
     }
   ]
 }
