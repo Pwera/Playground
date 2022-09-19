@@ -6,32 +6,32 @@ out/
 gradlew
 gradlew.bat
 cmake-build-debug/
-src/main/go/snippets/deck/x.data
+go/snippets/deck/x.data
 
-src/main/rust/rs/target/*
-src/main/rust/rs/Cargo.lock
-src/main/rust/rs/.idea
-src/main/rust/dyn/target/
-src/main/rust/cli/target/
+rust/rs/target/*
+rust/rs/Cargo.lock
+rust/rs/.idea
+rust/dyn/target/
+rust/cli/target/
 
-src/main/rust/pipe/target/
+rust/pipe/target/
 
-src/main/webassembly/wasm1/node_modules/
-src/main/webassembly/wasm2/node_modules/
-src/main/webassembly/wasm3/node_modules/
-src/main/webassembly/wasm4/node_modules/
-src/main/webassembly/wasm4 (copy)
-src/main/webassembly/wasm5
-src/main/webassembly/wasm6
+webassembly/wasm1/node_modules/
+webassembly/wasm2/node_modules/
+webassembly/wasm3/node_modules/
+webassembly/wasm4/node_modules/
+webassembly/wasm4 (copy)
+webassembly/wasm5
+webassembly/wasm6
 
 
 
-src/main/go/snippets/app1/votes.diskqueue.meta.dat
+go/snippets/app1/votes.diskqueue.meta.dat
 
-src/main/go/snippets/app1/*.dat
-src/main/go/snippets/app1/mongodbdata/*
+go/snippets/app1/*.dat
+go/snippets/app1/mongodbdata/*
 
 *.env
-src/main/rust/iterator/target/*
-src/main/rust/algo/target/*
+rust/iterator/target/*
+rust/algo/target/*
 *.lock
