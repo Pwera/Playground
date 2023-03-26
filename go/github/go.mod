@@ -3,7 +3,7 @@ module github.com/pwera/github
 go 1.18
 
 require (
-	golang.org/x/net v0.0.0-20220526153639-5463443f8c37
+	golang.org/x/net v0.7.0
 	golang.org/x/oauth2 v0.0.0-20220524215830-622c5d57e401
 )
 
